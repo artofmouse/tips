@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+html,body{margin:0;padding:0;}
+.container{width:100%;height:100%;min-width:1280px;max-width:2560px;margin:0 auto;position: relative;}
+
+/* 안내서 */
+.container .guide_area{width:100%;height:960px;background: url('../images/sec2_bg.jpg') top center no-repeat;}
+.container .guide_area .inner{width:100%;height:960px;margin:0 auto;}
+.container .guide_area .inner h3{margin:0 auto;width:869px;padding:85px 0 30px 0;}
+.container .guide_area .inner .con_area{width:1280px;height:513px;margin:0 auto;position: relative;background:transparent;}
+.container .guide_area .inner .con_area .slide_area{position: absolute;top:37px;left:149px;}
+.container .guide_area .inner .con_area .slide_area div{margin:0;padding:0;}
+.container .guide_area .inner .con_area .slide_area div img{border-radius: 3px;}
+
+/* swiper 재정의 */
+.swiper-container {width: 1024px;height: 478px;position: relative;}
+.swiper-pagination {position: absolute;top:47px;right: 0px;width: auto !important;left: auto !important;margin: 0;}
+.swiper-pagination-bullet {border-radius: 0;text-align: center;opacity: 1;display:block;overflow:hidden;text-align:center;width:122px;height:126px;margin:0;padding:0;outline: 0;}
+.swiper-pagination-bullet:nth-child(1) {padding: 0px;border-radius: 0;width: 0;height: 0;opacity:0;}
+.swiper-pagination-bullet:nth-child(2) {background: url('../images/sec2_thum1.png') 50% 50% no-repeat;}
+.swiper-pagination-bullet:nth-child(3) {background: url('../images/sec2_thum2.png') 50% 50% no-repeat;}
+.swiper-pagination-bullet:nth-child(4) {background: url('../images/sec2_thum3.png') 50% 50% no-repeat;}
+.swiper-pagination-bullet-active {border-radius: 0;text-align: center;opacity: 1;display:block;overflow:hidden;text-align:center;width:122px;height:126px;border:0;outline: 0;}
+.swiper-pagination-bullet:nth-child(2).swiper-pagination-bullet-active {background: url('../images/sec2_thum1on.png') 50% 50% no-repeat;}
+.swiper-pagination-bullet:nth-child(3).swiper-pagination-bullet-active {background: url('../images/sec2_thum2on.png') 50% 50% no-repeat;}
+.swiper-pagination-bullet:nth-child(4).swiper-pagination-bullet-active {background: url('../images/sec2_thum3on.png') 50% 50% no-repeat;}

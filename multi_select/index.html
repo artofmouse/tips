@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="stylesheet" href="resources/css/style.css">
+	<title>크레온</title>
+	<style>
+		.fnselect_area{margin:20px;}
+		.fnselect_area select{width:180px;height:40px;}
+		.fnselect_area .total_area{font-size:20px;overflow: hidden;line-height:36px;margin-top:10px;padding:0;}
+		.fnselect_area .total_area span.total_num{display:inline-block;width:100px;text-align:right;color:red;font-weight:bold;font-size:24px;border-bottom:1px solid #000;margin:0;padding-right:10px;line-height:26px;}
+	</style>
+</head>
+<body>
+	<div class="fnselect_area">
+		<select id="internet" onchange="iptvReset();categoryChange(this)">
+			<option value="z">선택하기</option>
+			<option value="a">광랜인터넷</option>
+			<option value="b">Giga인터넷 라이트</option>
+			<option value="c">Giga프리미엄X10</option>
+			<option value="c">Giga프리미엄X5</option>
+			<option value="c">Giga인터넷</option>
+		</select>
+		<select id="iptv" onchange="categoryChange(this);iptv_null_chk()">
+			<option value="">선택하기</option>
+			<!-- <option value="">B tv All</option>
+			<option value="">B tv 스탠다드</option> -->
+		</select>
+		<select id="good" onchange="fnSelectReset(this);iptv_null_chk()">
+			<option value="">선택하기</option>
+		</select>
+		<select id="discount" onchange="numberChange(this)">
+			<option value="">선택하기</option>
+			<!-- <option value="">내가 대표로</option>
+			<option value="">가족 모두 나눠서</option> -->
+		</select>
+
+		<div class="total_area">
+			온가족플랜으로 우리 가족은 <span id="total" class="total_num"></span>원 할인받을 수 있어요.
+		</div>
+	</div>
+<script>
+function iptvReset(){
+	var internet_value = $("#internet option:selected").val();
+	if(internet_value == "z"){
+		$("#iptv").html("<option>선택하기</option>");
+	} else {
+		$("#iptv").html("<option>선택하기</option><option>B tv All</option><option>B tv 스탠다드</option>");
+	}
+	$("#discount").empty();
+	$("#discount").html("<option>선택하기</option>");
+}
+function fnSelectReset(){
+	var iptv_value = $("#iptv option").index($("#iptv option:selected"));
+	var cell_value = $("#good option").index($("#good option:selected"));
+	var discount_value = $("#discount option").index($("#discount option:selected"));
+	$("#total").text('')
+	$("#discount").empty();
+	if(iptv_value == "0" || cell_value =="0"){
+		$("#discount").html("<option>선택하기</option>");
+	} else {
+		$("#discount").html("<option>선택하기</option><option>내가 대표로</option><option>가족 모두 나눠서</option>");
+	}
+}
+function categoryChange(e) {
+	var iptv_value = $("#iptv option").index($("#iptv option:selected"));
+	var internet_value = $("#internet option:selected").val();
+	var iptv_value = $("#iptv option").index($("#iptv option:selected"));
+	var good_a = ["선택하기", "2회선", "2회선(band 데이터 퍼펙트 이상)", "3~5회선"];
+	var good_b = ["선택하기", "2회선", "3회선", "4~5회선"];
+	var good_c = ["선택하기", "2회선", "3회선", "4회선", "5회선"];
+	var good_z = ["선택하기"];
+	var target = document.getElementById("good");
+
+	$("#total").text('');
+	$("#discount").html("<option>선택하기</option>");
+	if(iptv_value == "0"){
+		$("#good").html("<option>선택하기</option>");
+	} else{
+		if(internet_value == "z"){
+			$("#internet").blur();
+			$("#iptv").html("<option>선택하기</option>");
+		}
+		
+		fnSelectReset();
+	
+		if(internet_value == "a") var d = good_a;
+		else if(internet_value == "b") var d = good_b;
+		else if(internet_value == "c") var d = good_c;
+		else if(internet_value == "z") var d = good_z;
+
+		target.options.length = 0;
+		
+		for (x in d) {
+			var opt = document.createElement("option");
+			opt.value = d[x];
+			opt.innerHTML = d[x];
+			target.appendChild(opt);
+		}
+	}
+}
+
+function iptv_null_chk(){
+	var iptv_value = $("#iptv option").index($("#iptv option:selected"));
+	if(iptv_value == "0"){
+		$("#good").html("<option>선택하기</option>");
+	}
+}
+
+function numberChange(e) {
+	var internet_value = $("#internet option:selected").val();
+	var cell_value = $("#good option").index($("#good option:selected"));
+	var discount_value = $("#discount option").index($("#discount option:selected"));
+
+	if(internet_value == "a" && cell_value == "1"){
+		$("#total").text('13,310')
+	} else if(internet_value == "a" && cell_value == "2"){
+		$("#total").text('22,110')
+	} else if(internet_value == "a" && cell_value == "3"){
+		$("#total").text('24,310')
+	} else if(internet_value == "b" && cell_value == "1"){
+		$("#total").text('18,810')
+	} else if(internet_value == "b" && cell_value == "2"){
+		$("#total").text('29,810')
+	} else if(internet_value == "b" && cell_value == "3"){
+		$("#total").text('35,310')
+	} else if(internet_value == "c" && cell_value == "1"){
+		$("#total").text('21,010')
+	} else if(internet_value == "c" && cell_value == "2"){
+		$("#total").text('32,010')
+	} else if(internet_value == "c" && cell_value == "3"){
+		$("#total").text('37,510')
+	} else if(internet_value == "c" && cell_value == "4"){
+		$("#total").text('40,810')
+	} else {
+		$("#total").text('')
+	}
+	if(discount_value == "0"){
+		$("#total").text('')
+	}
+}
+</script>
+<script src="resources/js/libs/jquery-3.4.1.min.js"></script>
+<script src="resources/js/pub_common.js"></script>
+</body>
+</html>

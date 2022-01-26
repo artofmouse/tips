@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+html,body{margin:0;padding:0;}
+.container{width:100%;height:100%;min-width:1280px;max-width:2560px;margin:0 auto;position: relative;}
+
+/* 키비주얼 */
+.container .kv_area{width:100%;height:916px;position: relative;}
+
+/* 키비주얼하단 */
+.container .kv_sub_area{width:100%;height:605px;background: url('../images/kv_sub.jpg') top center no-repeat;}
+
+/* 해외주식이벤트 */
+.container .event_area{width:100%;height:1421px;background: url('../images/sec1_bg.jpg') top center repeat-x;}
+
+/* 안내서 */
+.container .guide_area{width:100%;height:960px;background: url('../images/sec2_bg.jpg') top center no-repeat;}
+
+/* 혜택 */
+.container .benefit_area{width:100%;height:1482px;}
+
+/* 하단스티키버튼 */
+.container .sticky_btn{width:2560px;height:101px;background: url('../images/stickey_bg.jpg') top center no-repeat;position: fixed;bottom:-101px;left:50%;transform: translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transition: .3s;z-index:999;}
+.container .sticky_btn.active{bottom:0px;transition: .5s}
+.container .sticky_btn .btn_area{width:1000px;margin:0 auto;overflow: hidden;}
+.container .sticky_btn .btn_area .btn{float:left; width:50%;height:101px;box-sizing: border-box;}
+.container .sticky_btn .btn_area .btn img{width:100%;height:auto;}
